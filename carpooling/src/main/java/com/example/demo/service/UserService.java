@@ -48,7 +48,6 @@ public class UserService {
 	existingUser.setName(user.getName());
 	existingUser.setMobile(user.getMobile());
 	existingUser.setUsertype(user.getUsertype());
-	existingUser.setDepartment(user.getDepartment());
 	existingUser.setSource_lat(user.getSource_lat());
 	existingUser.setSource_lon(user.getSource_lon());
 	existingUser.setDestination_lat(user.getDestination_lat());

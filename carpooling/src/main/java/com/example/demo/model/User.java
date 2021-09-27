@@ -1,12 +1,11 @@
 package com.example.demo.model;
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -25,7 +24,7 @@ public class User implements Serializable{
     @Column(name="id")
     private int id;
     
-    @NotBlank(message = "Name is mandatory")
+//    @NotBlank(message = "Name is mandatory")
     @Size(max = 45)
     @Column(name="name")
     private String name;
@@ -36,35 +35,35 @@ public class User implements Serializable{
     private long mobile;
     
     
-    @NotBlank(message = "User Type is mandatory")
+//    @NotBlank(message = "User Type is mandatory")
     @Column(name="user_type")
     private int usertype;
     
-    @NotBlank(message = "Department is mandatory")
-    @Column(name="department")
-    private int department;
-    
-    
-    @NotBlank(message = "Source Latitude is mandatory")
+//    @NotBlank(message = "Department is mandatory")
+//    @Column(name="department")
+//    private int department;
+
+//    
+//    @NotBlank(message = "Source Latitude is mandatory")
     @Column(name="source_latitude")
     private double source_lat;
     
     
-    @NotBlank(message = "Source Longitude is mandatory")
+//    @NotBlank(message = "Source Longitude is mandatory")
     @Column(name="source_longitude")
     private double source_lon;
     
     
-    @NotBlank(message = "Destination Latitude is mandatory")
+//    @NotBlank(message = "Destination Latitude is mandatory")
     @Column(name="destination_latitude")
     private double destination_lat;
     
-    @NotBlank(message = "Destination Longitude is mandatory")
+//    @NotBlank(message = "Destination Longitude is mandatory")
     @Column(name="destination_longitude")
     private double destination_lon;
     
     
-    @NotBlank(message = "Availibity Status is mandatory")
+//    @NotBlank(message = "Availibity Status is mandatory")
     @Column(name="availibity_status")
     private boolean availibiltystatus;
 
@@ -75,38 +74,11 @@ public class User implements Serializable{
 //
 //	private Login login;
   
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
  	@JoinColumn(name = "department_id", referencedColumnName = "id")
 
- 	private Department department1;
+ 	private Department department;
     
-    
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public User(int id, @NotBlank(message = "Name is mandatory") @Size(max = 45) String name, long mobile,
-			@NotBlank(message = "User Type is mandatory") int usertype,
-			@NotBlank(message = "Department is mandatory") int department,
-			@NotBlank(message = "Source Latitude is mandatory") double source_lat,
-			@NotBlank(message = "Source Longitude is mandatory") double source_lon,
-			@NotBlank(message = "Destination Latitude is mandatory") double destination_lat,
-			@NotBlank(message = "Destination Longitude is mandatory") double destination_lon,
-			@NotBlank(message = "Availibity Status is mandatory") boolean availibiltystatus) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.mobile = mobile;
-		this.usertype = usertype;
-		this.department = department;
-		this.source_lat = source_lat;
-		this.source_lon = source_lon;
-		this.destination_lat = destination_lat;
-		this.destination_lon = destination_lon;
-		this.availibiltystatus = availibiltystatus;
-	}
 
 
 	public int getId() {
@@ -146,16 +118,6 @@ public class User implements Serializable{
 
 	public void setUsertype(int usertype) {
 		this.usertype = usertype;
-	}
-
-
-	public int getDepartment() {
-		return department;
-	}
-
-
-	public void setDepartment(int department) {
-		this.department = department;
 	}
 
 
@@ -209,11 +171,19 @@ public class User implements Serializable{
 	}
 
 
-	
+	public Department getDepartment() {
+		return department;
+	}
+
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 
 
 	
 
+		
 }
 	
 	

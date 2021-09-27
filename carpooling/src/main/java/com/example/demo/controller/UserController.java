@@ -33,7 +33,7 @@ public class UserController {
 	
 
 	@PostMapping(value = "/adduser")
-	public ResponseEntity<String> addDetails(@Valid @RequestBody User user) {
+	public ResponseEntity<String> addDetails( @RequestBody User user) {
 		service.saveUser(user);
 		String successMessage = "User added successfully.";
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.CREATED);
@@ -55,7 +55,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<String> updateUser(@Valid @RequestBody User user) {
+	public ResponseEntity<String> updateUser( @RequestBody User user) {
 		service.updateUser(user);
 		String successMessage = "User  updated successfully.";
 		ResponseEntity<String> response = new ResponseEntity<String>(successMessage, HttpStatus.OK);

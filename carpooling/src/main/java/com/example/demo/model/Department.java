@@ -23,12 +23,9 @@ public class Department implements Serializable{
     @Column(name="id")
     private long id;
 
-    public Department(@NotBlank @Size(max = 45) String departmentname) {
-        this.departmentname = departmentname;
-    }
-
+    
     @Column(name="department_name")
-    @NotBlank
+//    @NotBlank
     @Size(max = 45)
     private String departmentname;
 
@@ -40,12 +37,6 @@ public class Department implements Serializable{
         this.departmentname = departmentname;
     }
     
-    
-    @OneToOne(fetch = FetchType.LAZY)
-  	@JoinColumn(name = "id", referencedColumnName = "id")
-
-  	private User user;
-
 	public long getId() {
 		return id;
 	}
@@ -54,12 +45,6 @@ public class Department implements Serializable{
 		this.id = id;
 	}
 	
-
-	public Department(long id, @NotBlank @Size(max = 45) String departmentname) {
-		super();
-		this.id = id;
-		this.departmentname = departmentname;
-	}
 
 	
 	
